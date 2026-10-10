@@ -40,3 +40,25 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+
+# Angular / Node.js
+node_modules/
+dist/
+.angular/
+
+# .NET
+**/bin/
+**/obj/
+
+# Fichiers confidentiels
+.env
+.env.*
+!.env.example
+
+# IDE
+.vscode/
+.vs/
+
+# Logs
+*.log
+
