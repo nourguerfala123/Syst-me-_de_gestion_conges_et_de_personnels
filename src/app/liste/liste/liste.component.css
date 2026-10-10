@@ -1,0 +1,271 @@
+
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body{
+    background:#f5f7fb;
+}
+
+/* Container */
+
+.employee-list-container{
+    width:95%;
+    max-width:1400px;
+    margin:35px auto;
+    background:#fff;
+    border-radius:18px;
+    padding:30px;
+    box-shadow:0 10px 35px rgba(19,27,46,.08);
+}
+
+/* Header */
+
+.page-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:30px;
+    flex-wrap:wrap;
+    gap:15px;
+}
+
+.page-header h2{
+    color:#131B2E;
+    font-size:30px;
+    font-weight:700;
+    letter-spacing:.3px;
+}
+
+/* Ajouter */
+
+.page-header button{
+    background:#131B2E;
+    color:white;
+    border:none;
+    padding:12px 22px;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:15px;
+    font-weight:600;
+    transition:.3s;
+}
+
+.page-header button:hover{
+    transform:translateY(-2px);
+    background:#1d2742;
+    box-shadow:0 8px 20px rgba(19,27,46,.25);
+}
+
+/* Badge */
+
+.badge-count{
+    background:#EEF2FA;
+    color:#131B2E;
+    padding:10px 18px;
+    border-radius:30px;
+    font-weight:600;
+    font-size:14px;
+}
+
+/* Table */
+
+.table-wrapper{
+    overflow-x:auto;
+}
+
+.employee-table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+.employee-table thead{
+    background:#131B2E;
+}
+
+.employee-table thead th{
+    color:white;
+    font-weight:600;
+    padding:18px;
+    font-size:14px;
+    letter-spacing:.5px;
+}
+
+.employee-table tbody td{
+    padding:18px;
+    color:#444;
+    font-size:14px;
+    border-bottom:1px solid #edf0f5;
+}
+
+.employee-table tbody tr{
+    transition:.25s;
+}
+
+.employee-table tbody tr:hover{
+    background:#f7f9fc;
+}
+
+/* Boutons */
+
+.employee-table td button{
+    border:none;
+    cursor:pointer;
+    padding:8px 16px;
+    border-radius:8px;
+    font-size:13px;
+    font-weight:600;
+    transition:.3s;
+    margin-right:8px;
+}
+
+/* Modifier */
+
+.employee-table td button:last-child{
+    background:#131B2E;
+    color:white;
+}
+
+.employee-table td button:last-child:hover{
+    background:#1f2b49;
+    transform:translateY(-2px);
+}
+
+/* Supprimer */
+
+.employee-table td button:first-child{
+    background:#FFF1F2;
+    color:#d92d20;
+}
+
+.employee-table td button:first-child:hover{
+    background:#d92d20;
+    color:white;
+}
+
+/* Etats */
+
+.state-message{
+    padding:40px;
+    text-align:center;
+    color:#131B2E;
+    font-size:17px;
+}
+
+/* Spinner */
+
+.spinner{
+    width:45px;
+    height:45px;
+    border:4px solid #E8ECF5;
+    border-top:4px solid #131B2E;
+    border-radius:50%;
+    margin:auto;
+    animation:spin .8s linear infinite;
+}
+
+@keyframes spin{
+    to{
+        transform:rotate(360deg);
+    }
+}
+
+/* Responsive */
+
+@media(max-width:900px){
+
+.page-header{
+    flex-direction:column;
+    align-items:flex-start;
+}
+
+.employee-table th,
+.employee-table td{
+    padding:12px;
+    font-size:13px;
+}
+
+.employee-table td button{
+    display:block;
+    width:100%;
+    margin:5px 0;
+}
+}
+
+.search-bar {
+  position: relative;
+  max-width: 300px;
+  margin: 12px 0;
+}
+
+.search-input {
+  width: 100%;
+  padding: 8px 12px 8px 36px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.search-icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #888;
+}
+
+
+/* ===== Select de filtre statut ===== */
+.statut-select {
+  padding: 0.55rem 2rem 0.55rem 0.9rem;
+  border: 1px solid #d0d5dd;
+  border-radius: 8px;
+  background-color: #ffffff;
+  color: #0a1f44; /* navy */
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path d='M1 1l5 5 5-5' stroke='%230a1f44' stroke-width='2' fill='none' fill-rule='evenodd'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 0.9rem center;
+  margin-left: 0.75rem;
+}
+
+.statut-select:hover {
+  border-color: #0a1f44;
+}
+
+.statut-select:focus {
+  border-color: #0a1f44;
+  box-shadow: 0 0 0 3px rgba(10, 31, 68, 0.12);
+}
+
+/* ===== Badges de statut ===== */
+.badge-actif,
+.badge-inactif {
+  display: inline-block;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: capitalize;
+  letter-spacing: 0.02em;
+}
+
+.badge-actif {
+  background-color: #eaf3ff;
+  color: #0a1f44;
+  border: 1px solid #b8d2f0;
+}
+
+.badge-inactif {
+  background-color: #f2f2f4;
+  color: #6b7280;
+  border: 1px solid #d0d5dd;
+}

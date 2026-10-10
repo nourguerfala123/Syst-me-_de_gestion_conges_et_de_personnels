@@ -1,0 +1,43 @@
+<div class="consulter-container">
+  <h2 class="page-title">Ma demande de congé</h2>
+
+  <div *ngIf="chargement" class="chargement">
+    Chargement en cours...
+  </div>
+
+  <div *ngIf="!chargement && errorMessage" class="aucune-demande">
+    {{ errorMessage }}
+  </div>
+
+  <table class="conges-table" *ngIf="!chargement && conge && !errorMessage">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Libellé</th>
+        <th>Date début</th>
+        <th>Date fin</th>
+        <th>Nbr jours</th>
+        <th>Statut</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{ conge.type }}</td>
+        <td>{{ conge.libelle }}</td>
+        <td>{{ conge.dateDebut | date:'dd/MM/yyyy' }}</td>
+        <td>{{ conge.dateFin | date:'dd/MM/yyyy' }}</td>
+        <td>{{ conge.nbrJours }}</td>
+        <td>
+          <span class="badge"
+                [ngClass]="{
+                  'badge-attente': conge.statut === 'En attente',
+                  'badge-accepte': conge.statut === 'Accepté',
+                  'badge-refuse': conge.statut === 'Refusé'
+                }">
+            {{ conge.statut }}
+          </span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

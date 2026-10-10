@@ -1,0 +1,48 @@
+<div class="dept-list-container">
+  <div class="page-header">
+    <h2>Liste des Departement</h2>
+    <span class="badge-count">
+      <button type="button" (click)="onAjouter()"> ➕ Ajouter departement</button>
+    </span>
+    <span class="badge-count">{{ dept.length }} Departement(s)</span>
+  </div>
+
+  <div *ngIf="isLoading" class="state-message loading">
+    <div class="spinner"></div>
+    <p>Chargement en cours...</p>
+  </div>
+
+  <div *ngIf="errorMessage" class="state-message error">
+    <p>{{ errorMessage }}</p>
+  </div>
+
+  <div class="table-wrapper" *ngIf="!isLoading && dept.length > 0">
+    <table class="employee-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nom du Departement</th>
+          <th>Description</th>
+          <th colspan="2" >Action</th>
+        </tr>
+      </thead>
+      <tbody>
+       <tr *ngFor="let d of dept">
+  <td>{{ d.idDept }}</td>
+  <td>{{ d.nomDept }}</td>
+  <td>{{ d.description }}</td>
+  <td>
+    <button (click)="onModifier(d)">✏️ Modifier</button>
+  </td>
+   <td>
+    <button (click)="onSupprimer(d)">🗑️ Supprimer</button>
+  </td>
+</tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="!isLoading && dept.length === 0" class="state-message empty">
+    <p>Aucun Departement trouvé.</p>
+  </div>
+</div>

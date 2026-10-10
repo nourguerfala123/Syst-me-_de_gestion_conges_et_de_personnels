@@ -1,0 +1,30 @@
+<div class="login-box">
+
+  <h2>Ajouter Un Departement</h2>
+
+  <form (ngSubmit)="valider()">
+
+    <table>
+      <tr>
+        <td class="l1"><label for="nom_dept">Nom du Departement:</label></td>
+        <td><input type="text" id="nom_dept" name="nom_dept" [(ngModel)]="nomDept"></td>
+      </tr>
+     <tr>
+  <td class="l1"><label for="description">Description :</label></td>
+  <td>
+    <textarea id="description" name="description" [(ngModel)]="description" rows="4"></textarea>
+  </td>
+</tr>
+    </table>
+
+    <button type="submit">Créer un Departement</button>
+     <button type="button" (click)="onAnnuler()" [disabled]="isSubmitting" class="btn btn-secondary">
+        Annuler
+      </button>
+
+    <p *ngIf="errorMessage" style="color:red">{{ errorMessage }}</p>
+    <p *ngIf="successMessage" style="color:green">{{ successMessage }}</p>
+
+  </form>
+
+</div>

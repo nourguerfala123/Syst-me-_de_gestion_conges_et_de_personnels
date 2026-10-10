@@ -1,0 +1,48 @@
+<!-- modifier-dept.component.html -->
+<div class="modifier-container">
+  <div class="page-header">
+    <h2>Modifier le Département</h2>
+  </div>
+
+  <div *ngIf="isLoading" class="state-message loading">
+    <div class="spinner"></div>
+    <p>Chargement en cours...</p>
+  </div>
+
+  <div *ngIf="errorMessage" class="state-message error">
+    <p>{{ errorMessage }}</p>
+  </div>
+
+  <form *ngIf="!isLoading" [formGroup]="deptForm" (ngSubmit)="onSubmit()" class="employee-form">
+
+    <div class="form-group">
+      <label for="nomDept">Nom du Département</label>
+      <input id="nomDept" type="text" formControlName="nomDept" />
+      <span class="field-error" *ngIf="deptForm.get('nomDept')?.invalid && deptForm.get('nomDept')?.touched">
+        Le nom du département est requis.
+      </span>
+    </div>
+
+    <div class="form-group">
+      <label for="description">Description</label>
+      <textarea id="description" formControlName="description" rows="4"></textarea>
+      <span class="field-error" *ngIf="deptForm.get('description')?.invalid && deptForm.get('description')?.touched">
+        La description est requise.
+      </span>
+    </div>
+
+    <div class="form-group state-message error" *ngIf="submitError">
+      <p>{{ submitError }}</p>
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" [disabled]="isSubmitting" class="btn btn-primary">
+        {{ isSubmitting ? 'Enregistrement...' : 'Enregistrer les modifications' }}
+      </button>
+      <button type="button" (click)="onAnnuler()" [disabled]="isSubmitting" class="btn btn-secondary">
+        Annuler
+      </button>
+    </div>
+
+  </form>
+</div>

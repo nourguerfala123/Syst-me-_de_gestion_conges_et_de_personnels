@@ -1,0 +1,161 @@
+
+.dept-list-container {
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 24px 28px;
+  margin: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+
+.page-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid #0a1f44;
+}
+
+.page-header h2 {
+  color: #0a1f44;
+  font-size: 22px;
+  font-weight: 600;
+  margin: 0;
+  flex-grow: 1;
+}
+
+/* ===== Badges (compteur + bouton ajouter) ===== */
+.badge-count {
+  display: flex;
+  align-items: center;
+}
+
+.badge-count button {
+  background-color: #0a1f44;
+  color: #ffffff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.badge-count button:hover {
+  background-color: #14315e;
+}
+
+.badge-count span,
+.badge-count:last-child {
+  background-color: #eef2f9;
+  color: #0a1f44;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* ===== Messages d'état ===== */
+.state-message {
+  text-align: center;
+  padding: 30px;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+
+.state-message.loading {
+  color: #0a1f44;
+}
+
+.state-message.error {
+  background-color: #fdecea;
+  color: #b3261e;
+  border: 1px solid #f5c2c0;
+}
+
+.state-message.empty {
+  background-color: #f7f9fc;
+  color: #5a6b87;
+  border: 1px dashed #cfd8e6;
+}
+
+/* ===== Spinner de chargement ===== */
+.spinner {
+  width: 36px;
+  height: 36px;
+  margin: 0 auto 12px;
+  border: 4px solid #dce3ee;
+  border-top: 4px solid #0a1f44;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ===== Tableau ===== */
+.table-wrapper {
+  overflow-x: auto;
+  border-radius: 8px;
+  border: 1px solid #e3e8f0;
+}
+
+.employee-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.employee-table thead {
+  background-color: #0a1f44;
+}
+
+.employee-table thead th {
+  color: #ffffff;
+  text-align: left;
+  padding: 14px 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 0.4px;
+}
+
+.employee-table tbody tr {
+  background-color: #ffffff;
+  border-bottom: 1px solid #eef1f6;
+  transition: background-color 0.15s ease;
+}
+
+.employee-table tbody tr:nth-child(even) {
+  background-color: #f8fafc;
+}
+
+.employee-table tbody tr:hover {
+  background-color: #eef2f9;
+}
+
+.employee-table td {
+  padding: 12px 16px;
+  color: #2c3648;
+}
+
+/* ===== Bouton Modifier ===== */
+.employee-table td button {
+  background-color: transparent;
+  color: #0a1f44;
+  border: 1px solid #0a1f44;
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.employee-table td button:hover {
+  background-color: #0a1f44;
+  color: #ffffff;
+}

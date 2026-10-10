@@ -1,0 +1,46 @@
+<div class="login-page">
+
+  <div class="brand-panel">
+    <div class="brand-content">
+      <i class="bi bi-calendar2-check brand-icon"></i>
+      <h1>GestionCongé</h1>
+      <p class="brand-tagline">Système de Gestion des Congés &amp; du Personnel</p>
+
+      <ul class="brand-features">
+        <li><i class="bi bi-check-circle"></i> Suivi des demandes de congé</li>
+        <li><i class="bi bi-check-circle"></i> Gestion des employés et départements</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="form-panel">
+    <div class="login-box">
+
+      <h2>Connexion</h2>
+      <p class="form-subtitle">Accédez à votre espace</p>
+
+      <form (ngSubmit)="connexion()">
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" [(ngModel)]="email" placeholder="exemple@domaine.com">
+        </div>
+
+        <div class="form-group">
+          <label for="password">Mot de passe</label>
+          <input type="password" id="password" name="password" [(ngModel)]="password" placeholder="••••••••">
+        </div>
+
+        <button type="submit" class="btn-connexion">Connexion</button>
+
+        <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
+
+        <div class="links">
+          <p>Vous n'avez pas de compte ? <a routerLink="/creation">Créer un compte</a></p>
+        </div>
+
+      </form>
+    </div>
+  </div>
+
+</div>

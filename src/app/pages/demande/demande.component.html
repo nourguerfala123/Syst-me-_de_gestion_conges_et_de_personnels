@@ -1,0 +1,43 @@
+<div class="login-box">
+
+  <h2>Faire un demande du Conge</h2>
+
+  <form (ngSubmit)="valider()">
+
+    <table>
+     
+      <tr>
+        <td class="l1"><label for="dateDebut"> Date Début du conge :</label></td>
+        <td><input type="date" id="dateDebut" name="dateDebut" [(ngModel)]="dateDebut"></td>
+      </tr>
+      <tr>
+        <td class="l1"><label for="dateFin">Date Fin du conge:</label></td>
+        <td><input type="date" id="dateFin" name="dateFin" [(ngModel)]="dateFin"></td>
+      </tr>
+      <tr>
+        <td class="l1"><label for="libelle">Libelle :</label></td>
+        <td><input type="text" id="libelle" name="libelle" [(ngModel)]="libelle"></td>
+      </tr>
+      <tr>
+        <td class="l1"><label for="Type">Type du Conge:</label></td>
+        <td>
+          <select id="Type" name="Type" [(ngModel)]="Type">
+            <option value="Congé de formation">Congé de formation</option>
+            <option value="Congé exceptionnel">Congé exceptionnel</option>
+            <option value="Congé maladie">Congé maladie</option>
+            <option value="Congé annuel">Congé annuel</option>
+          </select>
+        </td>
+      </tr>
+
+    </table>
+
+    <button type="submit"> Valider </button>
+    <button type="reset"> Annuler </button>
+
+    <p *ngIf="errorMessage" style="color:red">{{ errorMessage }}</p>
+    <p *ngIf="successMessage" style="color:green">{{ successMessage }}</p>
+
+  </form>
+
+</div>

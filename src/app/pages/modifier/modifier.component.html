@@ -1,0 +1,85 @@
+<!-- modifier.component.html -->
+<div class="modifier-container">
+  <div class="page-header">
+    <h2>Modifier l'employé</h2>
+  </div>
+
+  <div *ngIf="isLoading" class="state-message loading">
+    <div class="spinner"></div>
+    <p>Chargement en cours...</p>
+  </div>
+
+  <div *ngIf="errorMessage" class="state-message error">
+    <p>{{ errorMessage }}</p>
+  </div>
+
+  <form *ngIf="!isLoading" [formGroup]="employeeForm" (ngSubmit)="onSubmit()" class="employee-form">
+
+    <div class="form-group">
+      <label for="nom">Nom</label>
+      <input id="nom" type="text" formControlName="nom" />
+      <span class="field-error" *ngIf="employeeForm.get('nom')?.invalid && employeeForm.get('nom')?.touched">
+        Le nom est requis.
+      </span>
+    </div>
+
+    <div class="form-group">
+      <label for="prenom">Prénom</label>
+      <input id="prenom" type="text" formControlName="prenom" />
+      <span class="field-error" *ngIf="employeeForm.get('prenom')?.invalid && employeeForm.get('prenom')?.touched">
+        Le prénom est requis.
+      </span>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input id="email" type="email" formControlName="email" />
+      <span class="field-error" *ngIf="employeeForm.get('email')?.invalid && employeeForm.get('email')?.touched">
+        Email invalide.
+      </span>
+    </div>
+
+    <div class="form-group">
+      <label for="salaire">Salaire</label>
+      <input id="salaire" type="number" step="0.01" formControlName="salaire" />
+    </div>
+
+    <div class="form-group">
+      <label for="idDept">Département</label>
+      <select id="idDept" formControlName="idDept">
+        <option [ngValue]="null">-- Sélectionner --</option>
+        <option *ngFor="let dept of departements" [ngValue]="dept.idDept">
+          {{ dept.nomDept }}
+        </option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="poste">Poste</label>
+      <input id="poste" type="text" formControlName="poste" />
+    </div>
+
+    <div class="form-group">
+      <label for="matricule">Matricule</label>
+      <input id="matricule" type="text" formControlName="matricule">
+    </div>
+    
+    <div class="form-group">
+      <label for="dateEmbauche">Date d'Embauche</label>
+      <input id="dateEmbauche" type="text" formControlName="dateEmbauche">
+    </div>
+<div class="form-group" *ngIf="submitError" class="state-message error">
+      <p>{{ submitError }}</p>
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" [disabled]="isSubmitting" class="btn btn-primary">
+        {{ isSubmitting ? 'Enregistrement...' : 'Enregistrer les modifications' }}
+      </button>
+      <button type="button" (click)="onAnnuler()" [disabled]="isSubmitting" class="btn btn-secondary">
+        Annuler
+      </button>
+    </div>
+
+  </form>
+</div>

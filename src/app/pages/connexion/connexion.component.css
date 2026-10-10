@@ -1,0 +1,208 @@
+.login-page {
+  min-height: 100vh;
+  display: flex;
+}
+
+/* ---------- Panneau de marque (gauche) ---------- */
+.brand-panel {
+  flex: 1;
+  background: linear-gradient(160deg, #0a1f44 0%, #16305e 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px;
+  position: relative;
+  overflow: hidden;
+}
+
+.brand-panel::before {
+  content: '';
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.04);
+  top: -150px;
+  right: -150px;
+}
+
+.brand-panel::after {
+  content: '';
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.04);
+  bottom: -100px;
+  left: -100px;
+}
+
+.brand-content {
+  color: #ffffff;
+  max-width: 420px;
+  z-index: 1;
+}
+
+.brand-icon {
+  font-size: 42px;
+  color: #ffffff;
+  margin-bottom: 16px;
+  display: inline-block;
+}
+
+.brand-content h1 {
+  font-size: 32px;
+  font-weight: 700;
+  margin: 0 0 12px;
+}
+
+.brand-tagline {
+  font-size: 15px;
+  color: #c3cde3;
+  margin: 0 0 32px;
+  line-height: 1.5;
+}
+
+.brand-features {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.brand-features li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: #dde3f0;
+  margin-bottom: 14px;
+}
+
+.brand-features i {
+  color: #4ade80;
+  font-size: 16px;
+}
+
+/* ---------- Panneau du formulaire (droite) ---------- */
+.form-panel {
+  flex: 1;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+}
+
+.login-box {
+  width: 100%;
+  max-width: 380px;
+}
+
+.login-box h2 {
+  color: #0a1f44;
+  font-size: 26px;
+  font-weight: 700;
+  margin: 0 0 6px;
+}
+
+.form-subtitle {
+  color: #8b93a7;
+  font-size: 14px;
+  margin: 0 0 30px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: #0a1f44;
+  margin-bottom: 6px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1.5px solid #d7dce5;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #0a1f44;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #0a1f44;
+  box-shadow: 0 0 0 3px rgba(10, 31, 68, 0.1);
+}
+
+.form-group input::placeholder {
+  color: #a8b0c2;
+}
+
+.btn-connexion {
+  width: 100%;
+  padding: 13px;
+  background-color: #0a1f44;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+  margin-top: 4px;
+}
+
+.btn-connexion:hover {
+  background-color: #163268;
+}
+
+.btn-connexion:active {
+  transform: scale(0.98);
+}
+
+.error-message {
+  color: #d64545;
+  background-color: #fdeaea;
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: 13px;
+  text-align: center;
+  margin-top: 16px;
+}
+
+.links {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 13px;
+  color: #6b7a99;
+}
+
+.links a {
+  color: #0a1f44;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.links a:hover {
+  text-decoration: underline;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+  .login-page {
+    flex-direction: column;
+  }
+  .brand-panel {
+    padding: 40px 30px;
+    flex: none;
+  }
+  .brand-features {
+    display: none; /* on allège sur mobile */
+  }
+}

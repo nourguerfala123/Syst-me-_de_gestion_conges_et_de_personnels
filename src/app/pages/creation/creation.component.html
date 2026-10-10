@@ -1,0 +1,64 @@
+<div class="login-box">
+
+  <h2>Créer un compte</h2>
+
+  <form (ngSubmit)="valider()">
+
+    <table>
+      <tr>
+        <td class="l1"><label for="nom"> Nom:</label></td>
+        <td><input type="text" id="nom" name="nom" [(ngModel)]="nom"></td>
+      </tr>
+      <tr>
+        <td class="l1"><label for="prenom"> Prénom :</label></td>
+        <td><input type="text" id="prenom" name="prenom" [(ngModel)]="prenom"></td>
+      </tr>
+      <tr>
+        <td class="l1"><label for="email">Email:</label></td>
+        <td><input type="email" id="email" name="email" [(ngModel)]="email"></td>
+      </tr>
+      <tr>
+        <td class="l1"><label for="password">Password:</label></td>
+        <td><input type="password" id="password" name="password" [(ngModel)]="password"></td>
+      </tr>
+      <tr>
+        <td class="l1"><label for="role">Role:</label></td>
+        <td>
+          <select id="role" name="role" [(ngModel)]="role">
+            <option value="employe">Employé</option>
+            <option value="admin">Admin</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td class="l1"><label for="matricule">Matricule:</label></td>
+        <td><input type="text" id="matricule" name="matricule" [(ngModel)]="matricule"></td>
+      </tr>
+      <tr>
+        <td class="l1"><label for="poste">Poste:</label></td>
+        <td><input type="text" id="poste" name="poste" [(ngModel)]="poste"></td>
+      </tr>
+      <tr>
+        <td class="l1"><label for="salaire">Salaire:</label></td>
+        <td><input type="number" id="salaire" name="salaire" [(ngModel)]="salaire"></td>
+      </tr>
+     <!-- <tr>
+        <td class="l1"><label for="dateEmbauche">Date embauche:</label></td>
+        <td><input type="date" id="dateEmbauche" name="dateEmbauche" [(ngModel)]="dateEmbauche"></td>
+      </tr>-->
+      <tr>
+        <td class="l1"><label for="id_dept">Département (ID):</label></td>
+        <td><input type="number" id="id_dept" name="id_dept" [(ngModel)]="id_dept"></td>
+      </tr>
+    </table>
+
+    <button type="submit"> Créer un Compte </button>
+     <button type="button" (click)="onAnnuler()" [disabled]="isSubmitting" class="btn btn-secondary">
+        Annuler
+      </button>
+    <p *ngIf="errorMessage" style="color:red">{{ errorMessage }}</p>
+    <p *ngIf="successMessage" style="color:green">{{ successMessage }}</p>
+
+  </form>
+
+</div>

@@ -1,0 +1,89 @@
+<!-- liste.component.html -->
+<div class="employee-list-container">
+  <div class="page-header">
+    <h2>Liste des employés</h2>
+    <span class="badge-count"><button (click)="onAjouter()">➕ Ajouter Employe</button></span>
+    <span class="badge-count">{{ filteredEmployees.length }} employé(s)</span>
+   <!-- <span class ="badge-count">{{dept.length}}Departement(s)</span>  -->
+</div>
+
+<!-- Barre de recherche + filtre statut -->
+<div class="search-bar">
+  <i class="bi bi-search search-icon"></i>
+  <input
+    type="text"
+    class="search-input"
+    placeholder="🔎 Rechercher par nom..."
+    [(ngModel)]="searchTerm"
+    (input)="onSearch()"
+  />
+
+  <select
+    class="statut-select"
+    [(ngModel)]="statutFilter"
+    (change)="onStatutChange()"
+  >
+    <option value="tous">Tous les statuts</option>
+    <option value="actif">Actif</option>
+    <option value="inactif">inactif</option>
+  </select>
+</div>
+
+  <div *ngIf="isLoading" class="state-message loading">
+    <div class="spinner"></div>
+    <p>Chargement en cours...</p>
+  </div>
+
+  <div *ngIf="errorMessage" class="state-message error">
+    <p>{{ errorMessage }}</p>
+  </div>
+
+  <div class="table-wrapper" *ngIf="!isLoading && filteredEmployees.length > 0">
+    <table class="employee-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nom</th>
+          <th>Prénom</th>
+          <th>Email</th>
+           <th>Salaire</th>
+          <th>Département</th>
+          <th>poste</th>
+          <th>Matricule</th>
+          <th>Date d'Embauche </th>
+          <th>Statut</th>
+         <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let emp of filteredEmployees">
+          <td>{{ emp.idEmploye }}</td>
+          <td>{{ emp.nom }}</td>
+          <td>{{ emp.prenom }}</td>
+          <td>{{ emp.email }}</td>
+          <td>{{ emp.salaire }}</td>
+          <td>{{ emp.deptNom }}</td>
+          <td>{{emp.poste}}</td>
+          <td>{{emp.matricule}}</td>
+          <td>{{emp.dateEmbauche}}</td>
+          <td>
+            <span [class.badge-actif]="emp.statut?.toLowerCase() === 'actif'"
+                  [class.badge-inactif]="emp.statut?.toLowerCase() === 'desactive'">
+              {{ emp.statut }}
+            </span>
+          </td>
+          <td><button (click)="onSupprimer(emp)">👤🚫 Desactive</button>
+  <button (click)="onModifier(emp)">✏️ Modifier</button>
+        </td>
+         <!-- <td>
+           <span class="dept-tag">{{ emp.IdDept || '—' }}</span>
+          </td>-->
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="!isLoading && filteredEmployees.length === 0" class="state-message empty">
+    <p>Aucun employé trouvé.</p>
+  </div>
+</div>

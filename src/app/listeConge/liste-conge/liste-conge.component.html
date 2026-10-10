@@ -1,0 +1,64 @@
+<div class="conge-list-container">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h4 class="text-navy">Demandes de congé</h4>
+    <span class="badge-count">{{ conges.length }} Demande(s)</span>
+    <button id="btn" class="btn btn-sm btn-outline-secondary" (click)="chargerConges()">
+      <i class="bi bi-arrow-clockwise"></i> Actualiser
+    </button>
+  </div>
+
+  <div *ngIf="isLoading" class="text-center py-4">
+    <div class="spinner-border text-teal" role="status"></div>
+  </div>
+
+  <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+
+  <div class="table-responsive" *ngIf="!isLoading && !errorMessage">
+    <table border="2" class="table table-hover align-middle">
+      <thead class="table-navy">
+        <tr>
+          <th>#</th>
+          <th>Employé</th>
+          <th>Type</th>
+          <th>Date début</th>
+          <th>Date fin</th>
+          <th>Jours</th>
+          <th>Libellé</th>
+          <th>Statut</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let conge of conges">
+          <td>{{ conge.idConge }}</td>
+          <td>{{ conge.nomEmploye }}</td>
+          <td>{{ conge.type }}</td>
+          <td>{{ conge.dateDebut | date:'dd/MM/yyyy' }}</td>
+          <td>{{ conge.dateFin | date:'dd/MM/yyyy' }}</td>
+          <td>{{ conge.nbrJours }}</td>
+          <td>{{ conge.libelle }}</td>
+          <td>
+            <span class="badge" [ngClass]="getStatutClass(conge.statut)">
+              {{ conge.statut }}
+            </span>
+          </td>
+          <td>
+            <select [(ngModel)]="conge.nouveauStatut" [disabled]="conge.statut !== 'En attente'">
+              <option value="En attente">En attente</option>
+              <option value="Accepté">Accepté</option>    
+              <option value="Refusé">Refusé</option>
+            </select>
+            <button
+              (click)="modifierStatut(conge.idConge, conge.nouveauStatut)"
+              [disabled]="conge.statut !== 'En attente'">
+              Mettre à jour statut
+            </button>
+          </td>
+        </tr>
+        <tr *ngIf="conges.length === 0">
+          <td colspan="9" class="text-center text-muted py-3">Aucune demande de congé.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

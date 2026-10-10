@@ -1,0 +1,326 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&family=Inter:wght@400;500;600&display=swap');
+
+:host {
+  --navy: #131B2E;
+  --navy-light: #1C2740;
+  --accent: #2DD4BF;
+  --accent-soft: rgba(45, 212, 191, 0.14);
+  --danger: #E5484D;
+  --bg: #F4F6F9;
+  --text-main: #1E2635;
+  --text-muted-onlight: #6B7688;
+  --text-muted-ondark: #8894AC;
+}
+
+.app-shell {
+  display: flex;
+  min-height: 100vh;
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+}
+
+/* ---------- Sidebar ---------- */
+.sidebar {
+  width: 264px;
+  flex-shrink: 0;
+  background: var(--navy);
+  display: flex;
+  flex-direction: column;
+  padding: 1.75rem 1rem;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+}
+
+.sidebar-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0 0.5rem 1.5rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.brand-mark {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--accent);
+  position: relative;
+  flex-shrink: 0;
+}
+
+.brand-pulse {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 2px solid var(--accent);
+  animation: pulse 2.4s ease-out infinite;
+}
+
+@keyframes pulse {
+  0%   { transform: scale(0.6); opacity: 0.9; }
+  100% { transform: scale(1.8); opacity: 0; }
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.brand-title {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 800;
+  font-size: 1.05rem;
+  color: #fff;
+  letter-spacing: -0.01em;
+}
+
+.brand-subtitle {
+  font-size: 0.72rem;
+  color: var(--text-muted-ondark);
+  font-weight: 500;
+}
+
+.sidebar-section-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted-ondark);
+  padding: 0.5rem 0.75rem 0.4rem;
+}
+
+.sidebar-nav {
+  list-style: none;
+  margin: 0 0 0.5rem;
+  padding: 0;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.6rem 0.75rem;
+  margin: 0.1rem 0;
+  border-radius: 8px;
+  color: var(--text-muted-ondark);
+  font-weight: 500;
+  font-size: 0.9rem;
+  text-decoration: none;
+  border-left: 3px solid transparent;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.nav-link i {
+  font-size: 1.05rem;
+  width: 20px;
+  text-align: center;
+}
+
+.nav-link:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+}
+
+.nav-link.active {
+  background: var(--accent-soft);
+  color: #fff;
+  border-left-color: var(--accent);
+}
+
+.sidebar-footer {
+  margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.admin-card {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.6rem;
+  border-radius: 10px;
+  background: var(--navy-light);
+}
+
+.admin-avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--navy);
+  font-family: 'Manrope', sans-serif;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.admin-info {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+  flex-grow: 1;
+  min-width: 0;
+}
+
+.admin-name {
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.admin-role {
+  color: var(--text-muted-ondark);
+  font-size: 0.72rem;
+}
+
+.admin-logout {
+  background: none;
+  border: none;
+  color: var(--text-muted-ondark);
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 0.25rem;
+  transition: color 0.15s ease;
+}
+
+.admin-logout:hover {
+  color: var(--danger);
+}
+
+/* ---------- Content area ---------- */
+.content-area {
+  flex-grow: 1;
+  padding: 2rem 2.25rem;
+  color: var(--text-main);
+}
+
+.content-area :is(h1, h2, h3) {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 76px;
+    padding: 1.25rem 0.5rem;
+  }
+  .brand-text,
+  .sidebar-section-label,
+  .nav-link span,
+  .admin-info,
+  .admin-logout {
+    display: none;
+  }
+  .nav-link {
+    justify-content: center;
+  }
+  .content-area {
+    padding: 1.25rem;
+  }
+}
+/* ---------- Menu toggle (bouton "Gestion d'employé") ---------- */
+.nav-link-toggle {
+  width: 100%;
+  background: none;
+  border: none;
+  border-left: 3px solid transparent;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.chevron {
+  margin-left: auto;
+  font-size: 0.75rem;
+  transition: transform 0.2s ease;
+}
+
+.chevron.rotated {
+  transform: rotate(180deg);
+}
+
+/* ---------- Sous-menu ---------- */
+.submenu {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 0.5rem;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.25s ease;
+}
+
+.submenu.open {
+  max-height: 260px; /* assez grand pour contenir les 4 items */
+}
+
+.submenu-link {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.5rem 0.75rem 0.5rem 1.6rem;
+  margin: 0.05rem 0;
+  border-radius: 8px;
+  color: var(--text-muted-ondark);
+  font-weight: 500;
+  font-size: 0.85rem;
+  text-decoration: none;
+  position: relative;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.submenu-link::before {
+  content: '';
+  position: absolute;
+  left: 0.85rem;
+  top: 50%;
+  width: 6px;
+  height: 1px;
+  background: var(--text-muted-ondark);
+}
+
+.submenu-link i {
+  font-size: 0.9rem;
+  width: 16px;
+  text-align: center;
+}
+
+.submenu-link:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+}
+
+.submenu-link.active {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.btn-logout {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background-color: #ffffff;
+  color: #0a1f44;
+  border: 2px solid #0a1f44;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-logout:hover {
+  background-color: #0a1f44;
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(10, 31, 68, 0.3);
+}
+
+.btn-logout:active {
+  transform: scale(0.97);
+}

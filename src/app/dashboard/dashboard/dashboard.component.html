@@ -1,0 +1,64 @@
+<div class="app-shell">
+  <!-- Sidebar -->
+  <nav class="sidebar">
+    <div class="sidebar-brand">
+      <span class="brand-mark">
+        <span class="brand-pulse"></span>
+      </span>
+      <div class="brand-text">
+        <span class="brand-title">GestionCongé</span>
+        <span class="brand-subtitle">Espace Admin</span>
+        <!-- dashboard-layout.component.html -->
+<button (click)="onLogout()" class="btn-logout">
+    <i class="bi bi-box-arrow-right"></i>
+  Déconnexion
+</button>
+      </div>
+    </div>
+
+    <div class="sidebar-section-label">Ressources humaines</div>
+    <ul class="sidebar-nav">
+      <li>
+        <a class="nav-link" routerLink="/dashboard/liste" routerLinkActive="active" [routerLinkActiveOptions]="{exact: false}">
+          <i class="bi bi-people"></i>
+          <span>Gestion Des Employés</span>
+        </a>
+      </li>     
+      
+      <li>
+        <a class="nav-link" routerLink="/dashboard/liste-dept" routerLinkActive="active">
+          <i class="bi bi-building"></i>
+          <span>Gestion Départements</span>
+        </a>
+      </li>
+    </ul>
+
+    <div class="sidebar-section-label">Congés</div>
+    <ul class="sidebar-nav">
+      <li>
+        <a class="nav-link" routerLink="/dashboard/liste-conge" routerLinkActive="active">
+          <i class="bi bi-calendar-event"></i>
+          <span>Gestion des Demandes de congé</span>
+        </a>
+      </li>
+    </ul>
+
+    <div class="sidebar-footer">
+      <div class="admin-card">
+        <div class="admin-avatar">A</div>
+        <div class="admin-info">
+          <span class="admin-name">Administrateur</span>
+          <span class="admin-role">Accès complet</span>
+        </div>
+        <button class="admin-logout" title="Déconnexion">
+          <i class="bi bi-box-arrow-right"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Content -->
+  <main class="content-area">
+    <router-outlet></router-outlet>
+  </main>
+</div>
